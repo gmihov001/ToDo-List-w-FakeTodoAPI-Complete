@@ -1,29 +1,71 @@
-import React, { useState } from "react";
-//{} means that this is not a dafault import/exporting
+import React, { useState, useEffect } from "react";
+
 import Todo from "./Todo";
 
 const TodoList = () => {
-	const [singleTodo, setSingleTodo] = useState({});
+	const [singleTodo, setSingleTodo] = useState("");
 	const [todos, setTodos] = useState([
 		{ label: "brush teeth" },
 		{ label: "make the bed" },
 		{ label: "walk dog" }
 	]);
-	const handleChange = e => {
-		setSingleTodo({ label: e.target.value });
-	};
+
+	useEffect(() => {
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91")
+			.then(function(response) {
+				if (!response.ok) {
+					throw Error(response.statusText);
+				}
+				// Read the response as json.
+				return response.json();
+			})
+			.then(function(responseAsJson) {
+				// Do stuff with the JSON
+				console.log("responseAsJson", responseAsJson);
+				setTodos(responseAsJson);
+			})
+			.catch(function(error) {
+				console.log("Looks like there was a problem: \n", error);
+			}); // whatever you code here will execute only after the first time the component renders
+	}, []); // <------ PLEASE NOTICE THE
+
+	// const handleChange = e => {
+	// 	// reset to do
+	// 	setSingleTodo({ label: e.target.value, done: false });
+	// 	console.log(singleTodo);
+	// };
+
 	const handleClick = e => {
-		setTodos([...todos, singleTodo]);
-	};
-	const deleteTodo = index => {
-		const newTodos = [...todos];
-		newTodos.splice(index, 1);
-		setTodos(newTodos);
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91", {
+			method: "PUT", // or 'PUT'
+			body: JSON.stringify(
+				todos.concat({ label: singleTodo, done: false })
+			), // data can be `string` or {object}!
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(res => res.json())
+			.then(response => console.log("Success:", response))
+			.catch(error => console.error("Error:", error));
+		setTodos(todos.concat({ label: singleTodo, done: false }));
+		setSingleTodo("");
 	};
 
-	// the state is immutable - you can never change the state.
-	// We copy the state we can manipulate the copy of the state then we
-	// push the new todo
+	const deleteTodo = index => {
+		const newTodos = todos.filter((item, ind) => index != ind);
+		setTodos(newTodos);
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91", {
+			method: "PUT", // or 'PUT'
+			body: JSON.stringify(newTodos), // data can be `string` or {object}!
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(res => res.json())
+			.then(response => console.log("Success:", response))
+			.catch(error => console.error("Error:", error));
+	};
 
 	return (
 		<>
@@ -31,14 +73,12 @@ const TodoList = () => {
 				<input
 					type="text"
 					name="todo"
-					onChange={handleChange}
-					value={singleTodo.label}
+					onChange={e => setSingleTodo(e.target.value)}
+					value={singleTodo}
 				/>
 				<button onClick={handleClick}> Save </button>
 			</form>
 			{todos.map((value, index) => (
-				//map manipulates an array, if you want to change anything to an array you use map method
-				//creating a new a array from the old array
 				<Todo
 					todo={value.label}
 					key={index}
@@ -52,19 +92,3 @@ const TodoList = () => {
 };
 
 export default TodoList;
-
-//.prevents from submitting form/refreshing
-
-//other ways to complete handle click
-// setTodos(todos.concat(singleTodo))
-
-//     let newTodos = []
-//     for (let i = 0; i<todos.length; i++){
-//             newTodos.push(todos[i])
-//     }
-//     newTodos.push(singleTodo)
-//     setTodos (newTodos)
-// }
-
-//React is a one page application if you refresh the site then you might lose information in your state
-//we dont want that
