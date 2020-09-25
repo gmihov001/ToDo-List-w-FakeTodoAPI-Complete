@@ -26,21 +26,15 @@ const TodoList = () => {
 			})
 			.catch(function(error) {
 				console.log("Looks like there was a problem: \n", error);
-			}); // whatever you code here will execute only after the first time the component renders
-	}, []); // <------ PLEASE NOTICE THE
-
-	// const handleChange = e => {
-	// 	// reset to do
-	// 	setSingleTodo({ label: e.target.value, done: false });
-	// 	console.log(singleTodo);
-	// };
+			});
+	}, []); 
 
 	const handleClick = e => {
 		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91", {
-			method: "PUT", // or 'PUT'
+			method: "PUT", 
 			body: JSON.stringify(
 				todos.concat({ label: singleTodo, done: false })
-			), // data can be `string` or {object}!
+			), 
 			headers: {
 				"Content-Type": "application/json"
 			}
