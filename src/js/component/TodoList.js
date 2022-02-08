@@ -10,8 +10,10 @@ const TodoList = () => {
 		// { label: "walk dog" }
 	]);
 
+	const uri = "https://assets.breatheco.de/apis/fake/todos/user/Gmihov";
+
 	useEffect(() => {
-		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91")
+		fetch(uri)
 			.then(function(response) {
 				if (!response.ok) {
 					throw Error(response.statusText);
@@ -30,7 +32,7 @@ const TodoList = () => {
 	}, []);
 
 	const handleClick = e => {
-		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91", {
+		fetch(uri, {
 			method: "PUT",
 			body: JSON.stringify(
 				todos.concat({ label: singleTodo, done: false })
@@ -49,7 +51,7 @@ const TodoList = () => {
 	const deleteTodo = index => {
 		const newTodos = todos.filter((item, ind) => index != ind);
 		setTodos(newTodos);
-		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91", {
+		fetch(uri, {
 			method: "PUT", // or 'PUT'
 			body: JSON.stringify(newTodos), // data can be `string` or {object}!
 			headers: {
