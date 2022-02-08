@@ -73,14 +73,18 @@ const TodoList = () => {
 			/>
 			<button onClick={handleClick}> Save </button>
 
-			{todos.map((value, index) => (
-				<Todo
-					todo={value.label}
-					key={index}
-					index={index}
-					deleteTodo={deleteTodo}
-				/>
-			))}
+			<ul>
+				{" "}
+				{todos.map((value, index) => (
+					<Todo
+						todo={value.label}
+						key={index}
+						index={index}
+						deleteTodo={deleteTodo}
+					/>
+				))}
+			</ul>
+
 			<div className="remaining-todos"> {todos.length} items left </div>
 		</>
 	);
