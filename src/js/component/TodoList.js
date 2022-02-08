@@ -5,9 +5,9 @@ import Todo from "./Todo";
 const TodoList = () => {
 	const [singleTodo, setSingleTodo] = useState("");
 	const [todos, setTodos] = useState([
-		{ label: "brush teeth" },
-		{ label: "make the bed" },
-		{ label: "walk dog" }
+		// { label: "brush teeth" },
+		// { label: "make the bed" },
+		// { label: "walk dog" }
 	]);
 
 	useEffect(() => {
@@ -27,14 +27,14 @@ const TodoList = () => {
 			.catch(function(error) {
 				console.log("Looks like there was a problem: \n", error);
 			});
-	}, []); 
+	}, []);
 
 	const handleClick = e => {
 		fetch("https://assets.breatheco.de/apis/fake/todos/user/jdglez91", {
-			method: "PUT", 
+			method: "PUT",
 			body: JSON.stringify(
 				todos.concat({ label: singleTodo, done: false })
-			), 
+			),
 			headers: {
 				"Content-Type": "application/json"
 			}
