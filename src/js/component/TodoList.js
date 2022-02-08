@@ -65,15 +65,14 @@ const TodoList = () => {
 
 	return (
 		<>
-			<form onSubmit={e => e.preventDefault()}>
-				<input
-					type="text"
-					name="todo"
-					onChange={e => setSingleTodo(e.target.value)}
-					value={singleTodo}
-				/>
-				<button onClick={handleClick}> Save </button>
-			</form>
+			<input
+				type="text"
+				name="todo"
+				onChange={e => setSingleTodo(e.target.value)}
+				value={singleTodo}
+			/>
+			<button onClick={handleClick}> Save </button>
+
 			{todos.map((value, index) => (
 				<Todo
 					todo={value.label}
@@ -82,7 +81,7 @@ const TodoList = () => {
 					deleteTodo={deleteTodo}
 				/>
 			))}
-			<div className="remaining-todos"> {todos.length} item left </div>
+			<div className="remaining-todos"> {todos.length} items left </div>
 		</>
 	);
 };
