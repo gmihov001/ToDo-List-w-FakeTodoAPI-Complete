@@ -5,9 +5,9 @@ const Todo = ({ todo, index, deleteTodo }) => {
 	return (
 		<li className="todo">
 			<span>{todo}</span>
-			<button className="btn-delete" onClick={() => deleteTodo(index)}>
-				X
-			</button>
+			<span className="btn-delete" onClick={() => deleteTodo(index)}>
+				x
+			</span>
 		</li>
 	);
 };

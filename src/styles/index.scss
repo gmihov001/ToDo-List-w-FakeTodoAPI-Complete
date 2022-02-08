@@ -19,11 +19,15 @@ ul {
 
 li {
     padding: 10px 10px;
-    background-color: rgb(255, 245, 246);
-    box-shadow: inset -4px -2px 8px pink;
+    background-color: rgb(255, 251, 252);
+    box-shadow: inset -4px -2px 15px pink;
     color: #4c4b4b;
     font-weight: 200;
     font-size: 1.2em;
+}
+
+li:hover {
+    box-shadow: inset -4px -2px 6px pink;
 }
 
 h1 {
@@ -31,25 +35,38 @@ h1 {
     color: rgb(0, 185, 218);
     font-size: 60px;
 }
+
 .line {
     border-bottom: solid gray 1px; 
     width: 100%;
 }
+
 .todo{
     display: flex;
     width: 100%;
 }
-.btn-delete{
+
+.todo:hover .btn-delete {
     margin-left: auto;
     cursor: pointer;
     display: inline-block;
-    border-radius: 3px;
-    color: gray;
-    height: 20px;
-    width: 20px; 
+    height: 30px;
+    width: 40px;
     text-decoration: none;
-    background-color: rgb(139, 209, 106); 
+    font-weight: 300;
+    background-color: white;
+    color: gray;
+    text-align: center;
 }
+
+.btn-delete{
+    display: none;
+}
+
+.btn-delete:hover {
+    box-shadow: 1px 2px 5px lightgray;
+}
+
 input{
     height: 35px;
     width: 50%;
