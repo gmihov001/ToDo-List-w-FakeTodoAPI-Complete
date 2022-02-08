@@ -113,7 +113,7 @@ const TodoList = () => {
 				))}
 			</ul>
 
-			<div className="remaining-todos text-secondary font-italic">
+			<div className="remaining-todos text-secondary">
 				{todos.length} items left
 			</div>
 		</>

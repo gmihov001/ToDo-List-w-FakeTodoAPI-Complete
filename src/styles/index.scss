@@ -4,15 +4,15 @@
 
 .app-content{
     width: 700px;
-    border: 1px solid lightgray;
     background: rgb(255, 231, 235);
+    box-shadow: 15px 25px 30px lightgrey;
     padding-top: 40px;
     display: flex; 
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: auto; 
-    color: #4c4b4b;
+    color: #575656;
 }
 
 ul {
@@ -34,14 +34,14 @@ h1 {
 
 li {
     padding: 10px 10px;
-    box-shadow: inset -4px -2px 15px pink;
-    color: #4c4b4b;
+    box-shadow: inset -1px -2px 8px #ffe7eb;
+    color: #575656;
     font-weight: 200;
     font-size: 1.2em;
 }
 
 .todo {
-    background-color: rgb(255, 251, 252);
+    background-color: rgb(255, 253, 253);
     display: flex;
     width: 100%;
 }
@@ -53,7 +53,7 @@ li {
 }
 
 .todo:hover, .todo-done:hover {
-    box-shadow: inset -4px -2px 6px pink;
+    box-shadow: inset -2px -2px 8px pink;
 }
 
 
@@ -112,5 +112,10 @@ button {
     background-color: pink;
     font-weight: 200;
     box-shadow: 2px 2px 5px #bfbcbc;
+    color: #575656;
 }
 
+.remaining-todos {
+    font-style: italic;
+    font-weight: 200;
+}
