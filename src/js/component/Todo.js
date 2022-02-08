@@ -5,8 +5,13 @@ const Todo = ({ todo, index, deleteTodo }) => {
 	return (
 		<li className="todo">
 			<span>{todo.label}</span>
-			<span className="btn-delete" onClick={() => deleteTodo(index)}>
-				x
+			<span className="buttons">
+				<span className="btn-delete" onClick={() => deleteTodo(index)}>
+					v
+				</span>
+				<span className="btn-delete" onClick={() => deleteTodo(index)}>
+					x
+				</span>
 			</span>
 		</li>
 	);

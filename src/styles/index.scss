@@ -46,12 +46,9 @@ h1 {
     width: 100%;
 }
 
-.todo:hover .btn-delete {
-    margin-left: auto;
-    cursor: pointer;
-    display: inline-block;
-    height: 30px;
-    width: 40px;
+.todo:hover .btn-delete, .todo:hover .btn-done {
+    margin: 0 4px;
+    padding: 0 10px;
     text-decoration: none;
     font-weight: 300;
     background-color: white;
@@ -59,11 +56,17 @@ h1 {
     text-align: center;
 }
 
-.btn-delete{
-    display: none;
+.buttons {
+    margin-left: auto;
+    cursor: pointer;
+    display: inline-block;
 }
 
-.btn-delete:hover {
+.btn-delete, .btn-done{
+//     display: none;
+// }
+
+.btn-delete:hover, .btn-done:hover {
     box-shadow: 1px 2px 5px lightgray;
 }
 
