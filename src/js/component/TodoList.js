@@ -77,7 +77,7 @@ const TodoList = () => {
 				{" "}
 				{todos.map((value, index) => (
 					<Todo
-						todo={value.label}
+						todo={value}
 						key={index}
 						index={index}
 						deleteTodo={deleteTodo}

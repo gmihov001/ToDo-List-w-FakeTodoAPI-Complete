@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Todo = ({ todo, index, deleteTodo }) => {
 	return (
 		<li className="todo">
-			<span>{todo}</span>
+			<span>{todo.label}</span>
 			<span className="btn-delete" onClick={() => deleteTodo(index)}>
 				x
 			</span>
@@ -13,7 +13,7 @@ const Todo = ({ todo, index, deleteTodo }) => {
 };
 
 Todo.propTypes = {
-	todo: PropTypes.string,
+	todo: PropTypes.object,
 	deleteTodo: PropTypes.func,
 	index: PropTypes.number
 };
