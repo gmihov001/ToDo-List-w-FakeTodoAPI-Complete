@@ -101,7 +101,6 @@ const TodoList = () => {
 			</button>
 
 			<ul>
-				{" "}
 				{todos.map((value, index) => (
 					<Todo
 						todo={value}

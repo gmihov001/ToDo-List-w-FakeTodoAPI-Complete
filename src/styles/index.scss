@@ -2,6 +2,8 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
+$duration: 5s;
+
 .app-content{
     width: 700px;
     background: rgb(255, 231, 235);
@@ -23,8 +25,18 @@ ul {
 
 h1 {
     text-align: center;
-    color: rgb(0, 185, 218);
-    font-size: 60px;
+    color: transparent;
+    font-size: 80px;
+    font-weight: bolder;
+}
+
+
+.shine {
+    text-shadow: 
+        1px 1px 4px rgba(255,255, 255, 0.35),
+        3px 3px 0px rgb(2, 195, 230),
+        2px 2px 2px rgba(255 ,255, 255, 0.75), 
+        3px 4px 5px rgba(0, 0, 0, 0.8);
 }
 
 .line {
