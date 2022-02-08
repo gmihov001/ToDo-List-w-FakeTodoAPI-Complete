@@ -7,7 +7,7 @@ const Todo = ({ todo, index, deleteTodo }) => {
 			<span>{todo.label}</span>
 			<span className="buttons">
 				<span className="btn-delete" onClick={() => deleteTodo(index)}>
-					v
+					<i class="bi bi-check2" />
 				</span>
 				<span className="btn-delete" onClick={() => deleteTodo(index)}>
 					x

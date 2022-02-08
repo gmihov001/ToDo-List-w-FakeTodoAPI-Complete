@@ -46,25 +46,27 @@ h1 {
     width: 100%;
 }
 
+
+.btn-delete, .btn-done{
+    display: none;
+}
+
 .todo:hover .btn-delete, .todo:hover .btn-done {
     margin: 0 4px;
     padding: 0 10px;
     text-decoration: none;
-    font-weight: 300;
+    font-weight: 200;
     background-color: white;
     color: gray;
     text-align: center;
+    display: inline-block;
 }
 
-.buttons {
+.todo:hover .buttons {
     margin-left: auto;
     cursor: pointer;
     display: inline-block;
 }
-
-.btn-delete, .btn-done{
-//     display: none;
-// }
 
 .btn-delete:hover, .btn-done:hover {
     box-shadow: 1px 2px 5px lightgray;
