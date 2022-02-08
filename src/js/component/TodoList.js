@@ -13,6 +13,10 @@ const TodoList = () => {
 	const uri = "https://assets.breatheco.de/apis/fake/todos/user/Gmihov";
 
 	useEffect(() => {
+		getFetch();
+	}, []);
+
+	const getFetch = () => {
 		fetch(uri)
 			.then(function(response) {
 				if (!response.ok) {
@@ -29,23 +33,37 @@ const TodoList = () => {
 			.catch(function(error) {
 				console.log("Looks like there was a problem: \n", error);
 			});
-	}, []);
+	};
 
-	const handleClick = e => {
+	const updatePut = updatedTodos => {
 		fetch(uri, {
 			method: "PUT",
-			body: JSON.stringify(
-				todos.concat({ label: singleTodo, done: false })
-			),
+			body: JSON.stringify(updatedTodos),
 			headers: {
 				"Content-Type": "application/json"
 			}
 		})
 			.then(res => res.json())
-			.then(response => console.log("Success:", response))
+			.then(response => {
+				console.log("Success:", response);
+				getFetch();
+			})
 			.catch(error => console.error("Error:", error));
-		setTodos(todos.concat({ label: singleTodo, done: false }));
-		setSingleTodo("");
+	};
+
+	const addTodo = e => {
+		let newTodos = todos.concat({ label: singleTodo, done: false });
+		if (e.target.id == "input") {
+			if (e.key == "Enter") {
+				setTodos(newTodos);
+				updatePut(newTodos);
+				setSingleTodo("");
+			}
+		} else if (e.target.id == "button") {
+			setTodos(newTodos);
+			updatePut(newTodos);
+			setSingleTodo("");
+		}
 	};
 
 	const markDone = index => {
@@ -58,32 +76,29 @@ const TodoList = () => {
 			}
 		});
 		setTodos(newTodos);
+		updatePut(newTodos);
 	};
 
 	const deleteTodo = index => {
 		const newTodos = todos.filter((item, ind) => index != ind);
 		setTodos(newTodos);
-		fetch(uri, {
-			method: "PUT", // or 'PUT'
-			body: JSON.stringify(newTodos), // data can be `string` or {object}!
-			headers: {
-				"Content-Type": "application/json"
-			}
-		})
-			.then(res => res.json())
-			.then(response => console.log("Success:", response))
-			.catch(error => console.error("Error:", error));
+		updatePut(newTodos);
 	};
 
 	return (
 		<>
 			<input
 				type="text"
+				id="input"
 				name="todo"
 				onChange={e => setSingleTodo(e.target.value)}
+				onKeyUp={addTodo}
 				value={singleTodo}
 			/>
-			<button onClick={handleClick}> Save </button>
+			<button id="button" onClick={addTodo}>
+				{" "}
+				Save{" "}
+			</button>
 
 			<ul>
 				{" "}

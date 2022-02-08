@@ -12,6 +12,7 @@
     align-items: center;
     flex-direction: column;
     margin: auto; 
+    color: #4c4b4b;
 }
 
 ul {
@@ -97,6 +98,10 @@ input{
     box-shadow: inset 0 0 3px #acaaaa;
 }
 
+input:focus {
+    outline: none;
+}
+
 button {
     margin: 10px auto;
     display: inline-block;
@@ -105,7 +110,7 @@ button {
     width: 100px;
     border: none;
     background-color: pink;
-    color: white;
+    font-weight: 200;
     box-shadow: 2px 2px 5px #bfbcbc;
 }
 
