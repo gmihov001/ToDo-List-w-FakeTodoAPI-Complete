@@ -18,7 +18,7 @@ ul {
 }
 
 li {
-    padding: 10px 5px;
+    padding: 10px 10px;
     background-color: rgb(255, 245, 246);
     box-shadow: inset -4px -2px 8px pink;
     color: #4c4b4b;
@@ -38,7 +38,6 @@ h1 {
 .todo{
     display: flex;
     width: 100%;
-    padding: 3px;
 }
 .btn-delete{
     margin-left: auto;
@@ -62,7 +61,7 @@ input{
 
 button{
     cursor: pointer;
-    margin-top: 10px;
+    margin: 10px auto;
     display: inline-block;
     text-decoration: none;
     height: 30px;
