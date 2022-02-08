@@ -48,6 +48,18 @@ const TodoList = () => {
 		setSingleTodo("");
 	};
 
+	const markDone = index => {
+		let newTodos = todos.map((item, ind) => {
+			if (ind == index) {
+				item.done = !item.done;
+				return item;
+			} else {
+				return item;
+			}
+		});
+		setTodos(newTodos);
+	};
+
 	const deleteTodo = index => {
 		const newTodos = todos.filter((item, ind) => index != ind);
 		setTodos(newTodos);
@@ -81,6 +93,7 @@ const TodoList = () => {
 						key={index}
 						index={index}
 						deleteTodo={deleteTodo}
+						markDone={markDone}
 					/>
 				))}
 			</ul>
